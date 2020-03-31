@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Dictionary {
 
-	private List dictionary;
+	private List<String> dictionary;
 	private String language;
 
 	public Dictionary() {
@@ -71,9 +71,69 @@ public class Dictionary {
 			}else {
 				r.setCorrect(false);
 			}
-			word.add(r);
+			word.add(r); 
 		}
 		return word;
 	}
 
+	
+	public List<RichWord> spellCheckTextLinear(List<String> inputTextList){
+		List<RichWord> word= new ArrayList<RichWord>();
+		
+		for(String s: inputTextList) {
+			RichWord r= new RichWord(s);
+			
+			boolean found=false;
+			
+			for(String w: dictionary) {
+				if(w.equalsIgnoreCase(s)) {
+					found=true;
+					break;
+				}
+			}
+			if(found) {
+				r.setCorrect(true);
+			}else {
+				r.setCorrect(false);
+			}
+			word.add(r); 
+		}
+		return word;
+	}
+
+	public List<RichWord> spellCheckTextDichotomic(List<String> inputTextList) {
+
+		List<RichWord> parole = new ArrayList<RichWord>();
+
+		for (String str : inputTextList) {
+
+			RichWord richWord = new RichWord(str);
+			if (binarySearch(str.toLowerCase()))
+				richWord.setCorrect(true);
+			else
+				richWord.setCorrect(false);
+			parole.add(richWord);
+		}
+
+		return parole;
+	}
+
+	private boolean binarySearch(String stemp) {
+		int inizio = 0;
+		int fine = dictionary.size();
+
+		while (inizio != fine) {
+			int medio = inizio + (fine - inizio) / 2;
+			if (stemp.compareToIgnoreCase(dictionary.get(medio)) == 0) {
+				return true;
+			} else if (stemp.compareToIgnoreCase(dictionary.get(medio)) > 0) {
+				inizio = medio + 1;
+			} else {
+				fine = medio;
+			}
+		}
+
+		return false;
+	}
+	
 }

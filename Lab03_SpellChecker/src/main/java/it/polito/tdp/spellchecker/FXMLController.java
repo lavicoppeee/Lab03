@@ -18,6 +18,8 @@ public class FXMLController {
 	private Dictionary dictionary;
 	private List<String> inputTextList;
 	
+	private final static boolean dichotomicSearch = true;
+	private final static boolean linearSearch = false;
 	
     @FXML
     private ResourceBundle resources;
@@ -121,7 +123,13 @@ public class FXMLController {
     	
     	List<RichWord> outputTextList;
     	
-    	outputTextList=dictionary.spellCheckText(inputTextList);
+		if (dichotomicSearch) {
+			outputTextList = dictionary.spellCheckTextDichotomic(inputTextList);
+		} else if (linearSearch) {
+			outputTextList = dictionary.spellCheckTextLinear(inputTextList);
+		} else {
+			outputTextList=dictionary.spellCheckText(inputTextList);
+		}
     	
     	//fine tempo operazione
     	long end=System.nanoTime();

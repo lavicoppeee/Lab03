@@ -76,7 +76,7 @@
             </HBox>
             <HBox alignment="BOTTOM_RIGHT">
                <children>
-                  <Label text="The text contains ">
+                  <Label text="The text contains " textFill="#ff0707">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
@@ -86,7 +86,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doClearText" text="Button">
+                  <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doClearText" text="Clear " textFill="#2f2f2f">
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </HBox.margin>
@@ -95,7 +95,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="187.0" text="Spell check completed in " />
+                  <Label prefHeight="17.0" prefWidth="187.0" text="Spell check completed in " textFill="#1af51a" />
                   <Label fx:id="txtTime" textFill="#37f84e" />
                </children>
             </HBox>
